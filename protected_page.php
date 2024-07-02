@@ -16,6 +16,6 @@ if (!isset($_SESSION['user'])) {
 <body>
 <h1>Добро пожаловать, <?php echo htmlspecialchars($_SESSION['user']); ?></h1>
 <p>Это защищенная страница, доступная только авторизованным пользователям.</p>
-<a href="logout.php">Выйти</a>
+<a href="scripts/logout.php">Выйти</a>
 </body>
 </html>

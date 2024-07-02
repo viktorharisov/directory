@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <title>Редактировать запись</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
 <h1>Редактировать запись</h1>
@@ -44,6 +44,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="submit" value="Сохранить">
 </form>
 <br>
-<a href="index.php">Вернуться к списку</a>
+<a href="../index.php">Вернуться к списку</a>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 echo '
-<form id="add-entry-form" action="add_entry.php" method="POST">
+<form id="add-entry-form" action="../scripts/add_entry.php" method="POST">
     <label for="name">Название:</label>
     <input type="text" id="name" name="name" required maxlength="50">
 

@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Регистрация</h1>
-<form action="registration_function.php" method="POST">
+<form action="../scripts/registration_function.php" method="POST">
     <label for="surname">Фамилия:</label>
     <input type="text" id="surname" name="surname" required maxlength="50"><br>
 
