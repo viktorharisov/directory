@@ -1,0 +1,17 @@
+[2024-07-15 20:41:05] Запись с ID 16 была успешно обновлена.
+[2024-07-15 20:41:05] Запись с ID 17 была успешно обновлена.
+[2024-07-15 20:41:05] Запись с ID 18 была успешно обновлена.
+[2024-07-15 20:41:05] Запись с ID 19 была успешно обновлена.
+[2024-07-15 20:41:05] Запись с ID 20 была успешно обновлена.
+[2024-07-15 20:41:05] Запись с ID 21 была успешно обновлена.
+[2024-07-15 20:41:05] Запись с ID 42 была успешно обновлена.[2024-07-15 20:45:23] Пропущена пустая или некорректная строка: <b>Warning</b>:  include(includes/db_connect.php): Failed to open stream: No such file or directory in <b>C:\xampp\htdocs\directory_project\csv\export.php</b> on line <b>2</b><br />
+[2024-07-15 20:45:23] Пропущена пустая или некорректная строка: <br />
+[2024-07-15 20:45:23] Пропущена пустая или некорректная строка: <b>Warning</b>:  include(): Failed opening 'includes/db_connect.php' for inclusion (include_path='C:\xampp\php\PEAR') in <b>C:\xampp\htdocs\directory_project\csv\export.php</b> on line <b>2</b><br />
+[2024-07-15 20:45:23] Пропущена пустая или некорректная строка: ID, Name, Description, Complexity
+[2024-07-15 20:45:23] Пропущена пустая или некорректная строка: <br />
+[2024-07-15 20:45:23] Пропущена пустая или некорректная строка: <b>Warning</b>:  Undefined variable $conn in <b>C:\xampp\htdocs\directory_project\csv\export.php</b> on line <b>11</b><br />
+[2024-07-15 20:45:23] Пропущена пустая или некорректная строка: <br />
+[2024-07-15 20:45:23] Пропущена пустая или некорректная строка: <b>Fatal error</b>:  Uncaught Error: Call to a member function query() on null in C:\xampp\htdocs\directory_project\csv\export.php:11
+[2024-07-15 20:45:23] Пропущена пустая или некорректная строка: Stack trace:
+[2024-07-15 20:45:23] Пропущена пустая или некорректная строка: #0 {main}
+[2024-07-15 20:45:23] Пропущена пустая или некорректная строка:   thrown in <b>C:\xampp\htdocs\directory_project\csv\export.php</b> on line <b>11</b><br />
