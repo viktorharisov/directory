@@ -1,5 +1,5 @@
 <?php
-include 'db.php';
+include '../includes/db_connect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $surname = $conn->real_escape_string($_POST['surname']);
@@ -25,15 +25,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Email или логин уже заняты.");
     }
 
-    // Шифрование пароля
     $hashed_password = md5($password);
 
-    // Вставка данных в таблицу users
     $insert_query = $conn->prepare("INSERT INTO users (surname, name, email, login, password) VALUES (?, ?, ?, ?, ?)");
     $insert_query->bind_param("sssss", $surname, $name, $email, $login, $hashed_password);
 
     if ($insert_query->execute() === TRUE) {
         echo "Регистрация успешна.";
+        echo '<button onclick="window.location.href=\'../index.php?page=login\'">Перейти к входу</button>';
+        echo '<script>
+                setTimeout(function(){
+                    window.location.href = "../index.php?page=login";
+                }, 3000);
+              </script>';
     } else {
         echo "Ошибка: " . $insert_query->error;
     }

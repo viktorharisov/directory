@@ -1,5 +1,7 @@
 <?php
-include 'db.php';
+include '../includes/db_connect.php';
+
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $conn->real_escape_string($_POST['name']);
@@ -8,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $sql = "INSERT INTO directory_table (name, description, complexity) VALUES ('$name', '$description', $complexity)";
     if ($conn->query($sql) === TRUE) {
-        header("Location: index.php");
+        header("Location: ../index.php");
     } else {
         echo "Ошибка: " . $sql . "<br>" . $conn->error;
     }

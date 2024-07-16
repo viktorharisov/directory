@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Регистрация</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-<h1>Регистрация</h1>
-<form action="../scripts/registration_function.php" method="POST">
+<form action="/directory_project/scripts/user_register.php" method="POST">
     <label for="surname">Фамилия:</label>
     <input type="text" id="surname" name="surname" required maxlength="50"><br>
 
@@ -25,5 +24,7 @@
 
     <button type="submit">Зарегистрироваться</button>
 </form>
+<p>Уже есть аккаунт? <a href="index.php?page=login">Войти</a></p>
+
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'db.php';
+include '../includes/db_connect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $login = $conn->real_escape_string($_POST['login']);
@@ -15,9 +15,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows > 0) {
         $_SESSION['user'] = $login;
-        header("Location: protected_page.php");
+        header("Location: ../index.php?page=directory");
     } else {
-        echo "Неверный логин или пароль.";
+        echo "Неверный логин или пароль.<br/>";
+        echo '<a href="../index.php?page=login">Вернуться к авторизации</a>';
+
     }
     $conn->close();
 }
