@@ -17,8 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['user'] = $login;
         header("Location: ../index.php?page=directory");
     } else {
-        echo "Неверный логин или пароль.<br/>";
-        echo '<a href="../index.php?page=login">Вернуться к авторизации</a>';
+        echo '<div class="error-message">Неверный логин или пароль.</div>';
+        echo '<a href="../index.php?page=login" class="back-button">Вернуться к авторизации</a>';
 
     }
     $conn->close();

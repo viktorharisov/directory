@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <title>Регистрация</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/directory_project/scripts/register/ajax_handlers.js"></script>
 </head>
 <body>
-<form action="/directory_project/scripts/user_register.php" method="POST">
+<form action="/directory_project/scripts/register/user_register.php" method="POST">
     <label for="surname">Фамилия:</label>
     <input type="text" id="surname" name="surname" required maxlength="50"><br>
 

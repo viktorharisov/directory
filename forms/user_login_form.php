@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Вход</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
 <h1>Вход</h1><form action="/directory_project/scripts/user_login.php" method="POST">

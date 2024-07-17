@@ -1,5 +1,5 @@
 <?php
-include '../includes/db_connect.php';
+include '../../includes/db_connect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $surname = $conn->real_escape_string($_POST['surname']);
@@ -31,11 +31,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $insert_query->bind_param("sssss", $surname, $name, $email, $login, $hashed_password);
 
     if ($insert_query->execute() === TRUE) {
-        echo "Регистрация успешна.";
+        echo "Регистрация успешна.<br>";
         echo '<button onclick="window.location.href=\'../index.php?page=login\'">Перейти к входу</button>';
         echo '<script>
                 setTimeout(function(){
-                    window.location.href = "../index.php?page=login";
+                    window.location.href = "../../index.php";
                 }, 3000);
               </script>';
     } else {
