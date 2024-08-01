@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Импорт данных</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 <h1>Импорт данных</h1>
-<form action="../csv/import.php" method="post" enctype="multipart/form-data">
+<form action="/csv/import.php" method="post" enctype="multipart/form-data">
     <label for="file">Выберите CSV файл:</label>
-    <input type="file" id="file" name="file" required><br>
+    <input type="file" id="file" name="file" accept=".csv" required><br>
     <button type="submit">Импортировать</button>
 </form>
 <br>
-<a href="index.php?page=directory">Вернуться к списку</a>
+<a href="/index.php?page=directory" class="back-button">Вернуться к списку</a>
 </body>
 </html>

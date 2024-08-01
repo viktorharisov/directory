@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../includes/db_connect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES['file'])) {
@@ -10,11 +11,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES['file'])) {
 
         $log = [];
         $timestamp = date('Y-m-d H:i:s');
+        $successful = 0;
+        $failed = 0;
 
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
             // Проверка корректности данных
             if (count($data) < 4 || empty(trim($data[1])) || empty(trim($data[2])) || !is_numeric($data[3])) {
                 $log[] = "[$timestamp] Пропущена пустая или некорректная строка: " . implode(", ", $data);
+                $failed++;
                 continue;
             }
 
@@ -27,8 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES['file'])) {
             if ($complexity < 1 || $complexity > 5) {
                 $log[] = "[$timestamp] Некорректная сложность для ID $id. Установлено значение по умолчанию 1.";
                 $complexity = 1; // Установим значение по умолчанию
-            } else {
-                $complexity = ($complexity + 1 > 5) ? 1 : $complexity + 1;
             }
 
             if ($id > 0) {
@@ -53,16 +55,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES['file'])) {
 
             if ($conn->query($sql) !== TRUE) {
                 $log[] = "[$timestamp] Ошибка для ID $id: " . $conn->error;
+                $failed++;
             } else {
                 $log[] = "[$timestamp] Запись с ID $id была успешно $action.";
+                $successful++;
             }
         }
         fclose($handle);
 
         // Логирование
-        file_put_contents('logs/import_log.txt', implode("\n", $log). "\n", FILE_APPEND);
+        file_put_contents('logs/import_log.txt', implode("\n", $log) . "\n", FILE_APPEND);
+
+        //Вывод бразуерного сообщения
+        echo "
+        <script>
+            alert('Импорт завершен. Успешных операций: $successful. Неуспешных операций: $failed.');
+            window.location.href = '/index.php?page=directory';
+        </script>";
+    } else {
+        echo "
+        <script>
+            alert('Не удалось открыть файл.');
+            window.location.href = '/index.php?page=import_form';
+        </script>";
     }
-    header("Location: ../index.php?page=directory");
     exit;
 }
 ?>

@@ -14,8 +14,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Проверка корректности email
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)
+        || !preg_match("/\.(ru|com|net|org)$/", $email)) {
         die("Некорректный email.");
+    }
+
+    //Проверка корректности пароля
+    if(strlen($password) < 6 ||
+        !preg_match("/[A-Za-z]/", $password)||
+        !preg_match("/[0-9]/", $password)) {
+        die("Пароль должен содержать минимум 6 символов, включая одну букву и одну цифру.");
     }
 
     // Проверка уникальности email и логина
@@ -27,12 +35,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $hashed_password = md5($password);
 
-    $insert_query = $conn->prepare("INSERT INTO users (surname, name, email, login, password) VALUES (?, ?, ?, ?, ?)");
+    $insert_query = $conn->
+    prepare("INSERT INTO users (surname, name, email, login, password) VALUES (?, ?, ?, ?, ?)");
     $insert_query->bind_param("sssss", $surname, $name, $email, $login, $hashed_password);
 
     if ($insert_query->execute() === TRUE) {
         echo "Регистрация успешна.<br>";
-        echo '<button onclick="window.location.href=\'../index.php?page=login\'">Перейти к входу</button>';
+        echo '<button onclick="window.location.href=\'../../index.php?page=login\'">Перейти к входу</button>';
         echo '<script>
                 setTimeout(function(){
                     window.location.href = "../../index.php";

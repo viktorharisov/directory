@@ -12,13 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "UPDATE users SET surname='$surname', name='$name' WHERE login='$login'";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Данные успешно обновлены.";
-        echo '<script>
-                setTimeout(function(){
-                    window.location.href = "../index.php";
-                }, 3000);
-              </script><br/>';
-        echo '<a href="../index.php?page=directory">Вернуться к списку</a>';
+        echo '<script>alert("Имя и Фамилия успешно сохранились."); window.location.href = "/index.php?page=directory";</script>';
     } else {
         echo "Ошибка: " . $conn->error;
     }

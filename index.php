@@ -1,7 +1,9 @@
 <?php
+ob_start();
 session_start();
 
 include 'includes/db_connect.php';
+
 
 $page = isset($_GET['page']) ? $_GET['page'] : 'directory';
 
@@ -20,13 +22,15 @@ if (!isset($_SESSION['user']) && $page !== 'login' && $page !== 'register') {
 $userData = ['surname' => '', 'name' => ''];
 if (isset($_SESSION['user'])) {
     $login = $_SESSION['user'];
-    $sql = "SELECT surname, name FROM users WHERE login='$login'";
-    $result = $conn->query($sql);
+    $stmt = $conn->prepare("SELECT surname, name FROM users WHERE login = ?");
+    $stmt->bind_param("s", $login);
+    $stmt->execute();
+    $result = $stmt->get_result();
     if ($result->num_rows > 0) {
         $userData = $result->fetch_assoc();
     }
+    $stmt->close();
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -34,9 +38,11 @@ if (isset($_SESSION['user'])) {
     <meta charset="UTF-8">
     <title>Управление справочником</title>
     <link rel="stylesheet" href="css/styles.css">
+
 </head>
 <body>
 <div class="header">
+    <a href="index.php?page=directory" class="home-button">На главную</a>
     <h1>Управление справочником</h1>
     <?php if (isset($_SESSION['user'])): ?>
         <div class="user-info">
@@ -44,11 +50,9 @@ if (isset($_SESSION['user'])) {
             <div class="user-actions">
                 <a href="index.php?page=edit_user" class="button">Изменить данные пользователя</a>
                 <a href="csv/export.php" class="button">Экспортировать данные</a>
-                <a href="forms/import_form.php" class="button">Импортировать данные</a>
-
+                <a href="index.php?page=import" class="button">Импортировать данные</a>
                 <a href="index.php?page=logout" class="button logout-button">Выйти</a>
             </div>
-
         </div>
     <?php endif; ?>
 </div>
@@ -56,6 +60,9 @@ if (isset($_SESSION['user'])) {
 <div class="container">
     <?php
     switch ($page) {
+        case 'import':
+            include 'forms/import_form.php';
+            break;
         case 'login':
             include 'forms/user_login_form.php';
             break;

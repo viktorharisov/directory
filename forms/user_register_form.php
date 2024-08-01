@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Регистрация</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/directory_project/scripts/register/ajax_handlers.js"></script>
+    <script src="/scripts/register/ajax_handlers.js"></script>
 </head>
 <body>
-<form action="/directory_project/scripts/register/user_register.php" method="POST">
+<form action="/scripts/register/user_register.php" method="POST">
     <label for="surname">Фамилия:</label>
     <input type="text" id="surname" name="surname" required maxlength="50"><br>
 
@@ -26,7 +26,7 @@
 
     <button type="submit">Зарегистрироваться</button>
 </form>
-<p>Уже есть аккаунт? <a href="index.php?page=login">Войти</a></p>
+<p>Уже есть аккаунт? <a href="/index.php?page=login">Войти</a></p>
 
 </body>
 </html>

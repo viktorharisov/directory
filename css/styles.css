@@ -1,4 +1,19 @@
-/* Основные стили для всей страницы */
+.home-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-right: 20px;
+    margin-left: 0;
+}
+
+.home-button:hover {
+    background-color: #45a049;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -146,12 +161,14 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    table-layout: fixed;
 }
 
 th, td {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+    word-wrap: break-word;
 }
 
 th {

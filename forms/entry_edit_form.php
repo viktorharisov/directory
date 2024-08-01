@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Редактировать запись</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 <h1>Редактировать запись</h1>
@@ -17,6 +17,6 @@
     <button type="submit">Сохранить</button>
 </form>
 <br>
-<a href="/directory_project/index.php">Вернуться к списку</a>
+<a href="/index.php?page=directory">Вернуться к списку</a>
 </body>
 </html>
